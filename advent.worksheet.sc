@@ -1,6 +1,6 @@
 import scala.io.Source
 
-val source = Source.fromFile(System.getProperty("user.dir") + "/day1/input.txt")
+val source = Source.fromFile(System.getProperty("user.dir") + "/input.txt")
 val lines = source.getLines.toList.map(_.toDouble)
 source.close
 

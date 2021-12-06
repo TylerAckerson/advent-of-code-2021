@@ -953,3 +953,9 @@ val source = Source.fromFile(System.getProperty("user.dir") + "/day1/input.txt")
 [0m2021.12.06 09:33:35 INFO  time: evaluated worksheet 'day1.worksheet.sc' in 0.29s[0m
 [0m2021.12.06 09:33:36 INFO  time: evaluated worksheet 'day1.worksheet.sc' in 0.66s[0m
 [0m2021.12.06 09:33:46 INFO  time: evaluated worksheet 'day1.worksheet.sc' in 0.59s[0m
+[0m2021.12.06 09:38:18 INFO  no build target: using presentation compiler with only scala-library: 3.1.0[0m
+[0m2021.12.06 09:38:18 INFO  time: evaluated worksheet 'advent.worksheet.sc' in 7.19s[0m
+[0m2021.12.06 09:38:22 INFO  no build target: using presentation compiler with only scala-library: 3.1.0[0m
+[0m2021.12.06 09:38:22 INFO  time: evaluated worksheet 'advent.worksheet.sc' in 3.53s[0m
+[0m2021.12.06 09:38:41 INFO  time: evaluated worksheet 'advent.worksheet.sc' in 1.5s[0m
+[0m2021.12.06 09:38:54 INFO  time: evaluated worksheet 'advent.worksheet.sc' in 0.52s[0m
