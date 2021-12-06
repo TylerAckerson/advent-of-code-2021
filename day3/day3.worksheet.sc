@@ -45,8 +45,11 @@ gamma * epsilon
 /*
  * PART TWO
  */
-def calculateOxygenGeneratorRating(
+
+// common method for calculations
+private def calculateRating(
     binaryStrings: List[String],
+    comparison: (Int, Int) => Char,
     idx: Int = 0
 ): Option[Int] = {
   if (binaryStrings.length <= 1) {
@@ -58,44 +61,32 @@ def calculateOxygenGeneratorRating(
     (str(idx), str)
   }
 
-  val (zeroCount, oneCount) = mapped.partition { case (h, _) => h == '0' }
-  val most: Char = if (oneCount.size >= zeroCount.size) '1' else '0'
-  val keepers: List[String] = mapped.filter {
-    case (head, _) => {
-      head == most
-    }
-  } map (a => a._2)
+  val (zeros, ones) = mapped.partition { case (h, _) => h == '0' }
+  val target: Char = comparison(zeros.size, ones.size)
+  val keepers: List[String] = mapped.collect {
+    case (char: Char, str: String) if char == target => str
+  }
 
-  calculateOxygenGeneratorRating(keepers, idx + 1)
+  calculateRating(keepers, comparison, idx + 1)
+}
+def calculateOxygenGeneratorRating(binaryStrings: List[String]): Option[Int] = {
+  val oxygenComparison = (zeroCount: Int, oneCount: Int) =>
+    if (zeroCount <= oneCount) '1' else '0'
+
+  calculateRating(binaryStrings, oxygenComparison)
 }
 
 def calculateCO2ScrubberRating(
     binaryStrings: List[String],
     idx: Int = 0
 ): Option[Int] = {
-  if (binaryStrings.length <= 1) {
-    binaryStrings.foreach(println(_))
-    return binaryStrings.headOption.map(Integer.parseInt(_, 2))
-  }
+  val scrubberComparison = (zeroCount: Int, oneCount: Int) =>
+    if (zeroCount <= oneCount) '0' else '1'
 
-  val mapped: List[(Char, String)] = binaryStrings.map { str =>
-    (str(idx), str)
-  }
-
-  val (zeroCount, oneCount) = mapped.partition { case (h, _) => h == '0' }
-  val least: Char = if (zeroCount.size <= oneCount.size) '0' else '1'
-  val keepers: List[String] = mapped.filter {
-    case (head, _) => {
-      head == least
-    }
-  } map (a => a._2)
-
-  calculateCO2ScrubberRating(keepers, idx + 1)
+  calculateRating(binaryStrings, scrubberComparison)
 }
 
 val oxygenGeneratorRating = calculateOxygenGeneratorRating(lines)
 val c02ScrubberRating = calculateCO2ScrubberRating(lines)
 
 oxygenGeneratorRating.getOrElse(0) * c02ScrubberRating.getOrElse(0)
-
-// TODO: lots of common code for these functions -> could be abstracted
