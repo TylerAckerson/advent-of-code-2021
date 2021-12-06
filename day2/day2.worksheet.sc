@@ -6,6 +6,7 @@ source.close
 
 var depth = 0
 var horizontalPosition = 0
+var aim = 0
 
 lines.foreach { line =>
   {
@@ -14,9 +15,12 @@ lines.foreach { line =>
     val amount = segments.tail.head.toInt
 
     direction match {
-      case "up"      => depth -= amount
-      case "down"    => depth += amount
-      case "forward" => horizontalPosition += amount
+      case "up"   => aim -= amount
+      case "down" => aim += amount
+      case "forward" => {
+        horizontalPosition += amount
+        depth += aim * amount
+      }
     }
   }
 }

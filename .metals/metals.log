@@ -3621,3 +3621,69 @@ value += is not a member of Int - did you mean Int.!=?
                         ^^^^^^^^^^^^^^^^^^^^^
 [0m2021.12.06 10:19:21 INFO  time: evaluated worksheet 'day2.worksheet.sc' in 0.19s[0m
 [0m2021.12.06 10:19:29 INFO  time: evaluated worksheet 'day2.worksheet.sc' in 0.67s[0m
+[0m2021.12.06 10:25:11 INFO  time: evaluated worksheet 'day2.worksheet.sc' in 1.13s[0m
+[0m2021.12.06 10:26:22 INFO  time: evaluated worksheet 'day2.worksheet.sc' in 0.85s[0m
+[0m2021.12.06 10:26:31 INFO  time: evaluated worksheet 'day2.worksheet.sc' in 0.83s[0m
+[0m2021.12.06 10:26:46 INFO  time: evaluated worksheet 'day2.worksheet.sc' in 0.43s[0m
+[0m2021.12.06 10:26:51 INFO  time: evaluated worksheet 'day2.worksheet.sc' in 0.63s[0m
+[0m2021.12.06 10:26:54 INFO  time: evaluated worksheet 'day2.worksheet.sc' in 0.39s[0m
+[0m2021.12.06 10:26:59 INFO  time: evaluated worksheet 'day2.worksheet.sc' in 1.03s[0m
+[0m2021.12.06 10:27:30 ERROR scalafmt: /Users/tackerson/Projects/advent-of-code/day2/day2.worksheet.sc:34: error: [dialect default] } expected but end of file found
+
+^[0m
+[31merror[39m: day2/day2.worksheet.sc:34:1: } expected but end of file found
+
+^
+[0m2021.12.06 10:27:35 INFO  time: evaluated worksheet 'day2.worksheet.sc' in 0.66s[0m
+[31merror[39m: day2/day2.worksheet.sc:34:1: } expected but end of file found
+
+^
+[0m2021.12.06 10:27:35 INFO  time: evaluated worksheet 'day2.worksheet.sc' in 0.22s[0m
+[31merror[39m: day2/day2.worksheet.sc:34:1: } expected but end of file found
+
+^
+[0m2021.12.06 10:27:35 INFO  time: evaluated worksheet 'day2.worksheet.sc' in 0.28s[0m
+Dec 06, 2021 10:27:39 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint fallbackResponseError
+SEVERE: Internal error: java.lang.IllegalArgumentException: 33 is not a valid line number, allowed [0..31]
+java.util.concurrent.CompletionException: java.lang.IllegalArgumentException: 33 is not a valid line number, allowed [0..31]
+	at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:331)
+	at java.base/java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:346)
+	at java.base/java.util.concurrent.CompletableFuture$UniAccept.tryFire(CompletableFuture.java:704)
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:506)
+	at java.base/java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2088)
+	at scala.meta.internal.metals.CancelTokens$.$anonfun$future$1(CancelTokens.scala:40)
+	at scala.meta.internal.metals.CancelTokens$.$anonfun$future$1$adapted(CancelTokens.scala:38)
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:64)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: java.lang.IllegalArgumentException: 33 is not a valid line number, allowed [0..31]
+	at scala.meta.internal.inputs.InternalInput.lineToOffset(InternalInput.scala:37)
+	at scala.meta.internal.inputs.InternalInput.lineToOffset$(InternalInput.scala:32)
+	at scala.meta.inputs.Input$VirtualFile.lineToOffset(Input.scala:80)
+	at scala.meta.inputs.Position$Range$.apply(Position.scala:59)
+	at scala.meta.internal.mtags.MtagsEnrichments$XtensionPositionLspInverse.toMeta(MtagsEnrichments.scala:133)
+	at scala.meta.internal.parsing.Trees.$anonfun$findLastEnclosingAt$4(Trees.scala:77)
+	at scala.Option.flatMap(Option.scala:271)
+	at scala.meta.internal.parsing.Trees.findLastEnclosingAt(Trees.scala:76)
+	at scala.meta.internal.metals.codeactions.InsertInferredType.$anonfun$contribute$1(InsertInferredType.scala:69)
+	at scala.concurrent.Future$.$anonfun$apply$1(Future.scala:659)
+	at scala.util.Success.$anonfun$map$1(Try.scala:255)
+	at scala.util.Success.map(Try.scala:213)
+	at scala.concurrent.Future.$anonfun$map$1(Future.scala:292)
+	at scala.concurrent.impl.Promise.liftedTree1$1(Promise.scala:33)
+	at scala.concurrent.impl.Promise.$anonfun$transform$1(Promise.scala:33)
+	... 4 more
+
+[0m2021.12.06 10:27:51 INFO  time: evaluated worksheet 'day2.worksheet.sc' in 0.41s[0m
+[0m2021.12.06 10:28:43 INFO  time: evaluated worksheet 'day2.worksheet.sc' in 1.08s[0m
+[0m2021.12.06 10:28:48 INFO  time: evaluated worksheet 'day2.worksheet.sc' in 0.82s[0m
+[0m2021.12.06 10:29:25 INFO  time: evaluated worksheet 'day2.worksheet.sc' in 0.42s[0m
+[31merror[39m: day2/day2.worksheet.sc:24:7: } expected but case found
+      case "forward" => {
+      ^^^^
+[0m2021.12.06 10:29:28 INFO  time: evaluated worksheet 'day2.worksheet.sc' in 0.22s[0m
+[0m2021.12.06 10:29:31 INFO  time: evaluated worksheet 'day2.worksheet.sc' in 0.57s[0m
+[0m2021.12.06 10:29:37 INFO  time: evaluated worksheet 'day2.worksheet.sc' in 0.6s[0m
+[0m2021.12.06 10:29:38 INFO  time: evaluated worksheet 'day2.worksheet.sc' in 0.36s[0m
+[0m2021.12.06 10:30:40 INFO  time: evaluated worksheet 'day2.worksheet.sc' in 0.49s[0m
