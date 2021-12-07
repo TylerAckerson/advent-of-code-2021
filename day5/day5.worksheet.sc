@@ -43,11 +43,23 @@ lineCoords
           val coord = Coord(xCoord, lineCoord.start.y)
           mapped(coord) += 1
         }
+      } else {
+        // diagonal - increment x and y at the same time
+        var sorted = List(lineCoord.start, lineCoord.end).sortBy(_.x)
+        var (start, end) = (sorted(0), sorted(1)) // so X is always increasing
 
+        var xIdx = start.x
+        // if y is decreasing, it needs to be explicit
+        val step = if (end.y < start.y) -1 else 1
+        for (yIdx <- start.y to end.y by step) {
+          val coord = Coord(xIdx, yIdx)
+          mapped(coord) += 1
+          xIdx += 1
+        }
       }
 
     }
   })
 
-mapped.size //98455
-mapped count { case (_, count) => count > 1 } //7297
+mapped.size //part one: 98,455, part two: 170,788
+mapped count { case (_, count) => count > 1 } //part one: 7297 , part two: 21038
