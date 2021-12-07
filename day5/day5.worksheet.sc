@@ -24,24 +24,25 @@ val lineCoords: List[Line] = lines.map { line =>
   }
 }
 
-var mapped = collection.mutable.Map[Coord, Int]().withDefaultValue(0)
-lineCoords
-  .foreach({ lineCoord =>
+var mapped = lineCoords
+  .map({ lineCoord =>
     {
       if (lineCoord.start.x == lineCoord.end.x) {
         // iterate y axis
         var sorted = List(lineCoord.start.y, lineCoord.end.y).sorted
-        for (yCoord <- sorted(0) to sorted(1)) {
-          val coord = Coord(lineCoord.start.x, yCoord)
-          mapped(coord) += 1
+        Range.inclusive(sorted(0), sorted(1)).map { yCoord =>
+          {
+            Coord(lineCoord.start.x, yCoord)
+          }
         }
 
       } else if (lineCoord.start.y == lineCoord.end.y) {
         // iterate x axis
         var sorted = List(lineCoord.start.x, lineCoord.end.x).sorted
-        for (xCoord <- sorted(0) to sorted(1)) {
-          val coord = Coord(xCoord, lineCoord.start.y)
-          mapped(coord) += 1
+        Range.inclusive(sorted(0), sorted(1)).map { xCoord =>
+          {
+            Coord(xCoord, lineCoord.start.y)
+          }
         }
       } else {
         // diagonal - increment x and y at the same time
@@ -51,15 +52,21 @@ lineCoords
         var xIdx = start.x
         // if y is decreasing, it needs to be explicit
         val step = if (end.y < start.y) -1 else 1
-        for (yIdx <- start.y to end.y by step) {
-          val coord = Coord(xIdx, yIdx)
-          mapped(coord) += 1
-          xIdx += 1
+        Range.inclusive(start.y, end.y, step) map { yIdx =>
+          {
+            val coord = Coord(xIdx, yIdx)
+            xIdx += 1 // side-effect inside a map :face_palm:
+            coord
+          }
         }
       }
 
     }
   })
+  .flatten
+  .groupBy { case (c: Coord) => c }
+  .view
+  .mapValues(_.size)
 
 mapped.size //part one: 98,455, part two: 170,788
 mapped count { case (_, count) => count > 1 } //part one: 7297 , part two: 21038
