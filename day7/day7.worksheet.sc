@@ -6,37 +6,39 @@ val source =
 val lines = source.getLines.toList
 source.close
 
-val heights: List[Int] = (lines map { line =>
+val locations: List[Int] = (lines map { line =>
   {
     line.split(",").map(str => Integer.parseInt(str))
   }
 }).flatten.sorted
 
 // set the minGas to something very high
-// from 0 to maxHeight:
+// from 0 to maxLocation:
 //  calculate the sum for all crabs to get to that point: abs(a - b)
 // if gasUsed < minGas, set minGas to gasUsed
-def calculateMinGasNeeded(heights: List[Int]): Int = {
-  val maxHeight = heights.max
-  var minGas = heights.size * maxHeight
-  var optimalHeight = heights.head
+def calculateMinGasNeeded(distances: List[Int]): Int = {
+  val maxLocation = locations.max
+  var minGas = locations.size * sumAllInts(maxLocation)
 
-  for (height <- 0 to maxHeight) {
-    val gasNeeded = heights
-      .map(h => {
-        Math.abs(h - height)
-      })
+  for (location <- 0 to maxLocation) {
+    val gasNeeded = locations
+      .map(y => { sumAllInts(Math.abs(y - location)) })
       .sum
-
-    println(s"gasNeeded for height $height: $gasNeeded")
 
     if (gasNeeded < minGas) {
       minGas = gasNeeded
-      optimalHeight = height
     }
   }
 
   minGas
 }
 
-calculateMinGasNeeded(heights) // 354129
+private def sumAllInts(n: Int): Int = (n * (n + 1)) / 2
+
+calculateMinGasNeeded(locations) // 98905973
+
+// Optimizations:
+// start at the avg
+//      try +1, try -1... try +2, try -2
+//      if the gas keeps increasing, break out
+// find a formula to calculate this without O(n^2)
