@@ -35,10 +35,25 @@ def calculateMinGasNeeded(distances: List[Int]): Int = {
 
 private def sumAllInts(n: Int): Int = (n * (n + 1)) / 2
 
-calculateMinGasNeeded(locations) // 98905973
-
 // Optimizations:
-// start at the avg
+// - start at the avg
 //      try +1, try -1... try +2, try -2
 //      if the gas keeps increasing, break out
-// find a formula to calculate this without O(n^2)
+// - find a formula to calculate this without O(n^2)
+
+// Some inefficient methods for calculating the sume of digits 1 to n (if the formula was not handy)
+private def sumAllIntsWithFold(n: Int): Int = {
+  (1 to n).toList.foldLeft(0) { _ + _ }
+}
+
+private def sumAllIntsIter(n: Int): Int = {
+  var total = 0
+
+  for (x <- 1 to n) {
+    total += x
+  }
+
+  total
+}
+
+calculateMinGasNeeded(locations) // 98905973
